@@ -1,0 +1,22 @@
+{
+  "help": {
+    "ru": "Somnauts - это плеер интерактивных книг.\nИспользуйте следующие команды:\n/help - чтобы посмотреть этот список ещё раз",
+    "en": "Somnauts is an interactive books player"
+  },
+  "load": {
+    "ru": "Выберите сохранение или создайте новое",
+    "en": "Select save or create a new one"
+  },
+  "selectUiLang": {
+    "ru": "Select interface language:\nВыберите язык интерфейса:",
+    "en": "Select interface language:\nВыберите язык интерфейса:"
+  },
+  "selectBookLang": {
+    "ru": "Выберите язык этой книги:",
+    "en": "Select current book language:"
+  },
+  "selectBookLangNoCurrentBook": {
+    "ru": "В данный момент ни одна книга не читается, чтобы выбрать для неё язык. Используйте команду /books чтобы начать читать новую книгу.",
+    "en": "You can't select current book language because you don't have a current book. Use /books command to start a new book."
+  }
+}
