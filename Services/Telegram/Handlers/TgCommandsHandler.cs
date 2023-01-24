@@ -2,9 +2,10 @@
 using Services.Models;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.ReplyMarkups;
 using Utils.Language;
 
-namespace Services.Telegram;
+namespace Services.Telegram.Handlers;
 
 public interface ITgCommandsHandler
 {
@@ -24,11 +25,22 @@ public class TgCommandsHandler : ITgCommandsHandler
 
     public async Task InvokeAsync(UserModel user, string command)
     {
-        switch (command[1..])
+        switch (command[1..].ToLower())
         {
             case "start" or "help":
                 await _telegramBotClient.SendTextMessageAsync(user.TelegramId,
-                    _uiResources.Help.WithErrorString(user.InterfaceLang));
+                    _uiResources.Help.WithErrorString(user.InterfaceLang), entities: new MessageEntity[] { });
+                break;
+            case "interfacelang":
+                await _telegramBotClient.SendTextMessageAsync(user.TelegramId,
+                    _uiResources.SelectUiLang.WithErrorString(user.InterfaceLang),
+                    replyMarkup: new InlineKeyboardMarkup(LangEnum.List.Select(l =>
+                            InlineKeyboardButton.WithCallbackData(l.LangName, $"#interfacelang_{l.Value}"))
+                        .Select(b => new[] { b }))
+                );
+                break;
+            case "books":
+                
                 break;
         }
     }

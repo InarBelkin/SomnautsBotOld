@@ -8,12 +8,13 @@ namespace Utils.Language;
 public sealed class LangEnum : SmartEnum<LangEnum, string>
 {
     public static readonly LangEnum En = new LangEnum(nameof(En), "en", "eng", "english")
-        { ErrorMessage = "String resource not found" };
+        { ErrorMessage = "String resource not found", LangName = "English" };
 
     public static readonly LangEnum Ru = new LangEnum(nameof(Ru), "ru", "rus", "russian")
-        { ErrorMessage = "Строка не найдена" };
+        { ErrorMessage = "Строка не найдена", LangName = "Русский" };
 
-    public static readonly LangEnum De = new LangEnum(nameof(De), "de") { ErrorMessage = "" };
+    public static readonly LangEnum De = new LangEnum(nameof(De), "de")
+        { ErrorMessage = "Zeichenkette nicht gefunden", LangName = "Deutch" };
 
     private LangEnum(string name, string value, params string[] aliases) : base(name, value)
     {
@@ -24,10 +25,11 @@ public sealed class LangEnum : SmartEnum<LangEnum, string>
     public IEnumerable<string> Aliases => _aliases;
 
     public required string ErrorMessage { get; init; }
+    public required string LangName { get; init; }
 
     public static LangEnum GetNearestLang(string languageCode)
     {
-        LangEnum.TryFromName(languageCode, true, out var result);
+        LangEnum.TryFromValue(languageCode, out var result);
         result ??= En;
         return result;
     }

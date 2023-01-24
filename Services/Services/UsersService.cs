@@ -9,6 +9,7 @@ namespace Services.Services;
 public interface IUsersService
 {
     Task<UserModel> GetOrCreateUser(User tgUser);
+    Task UpdateLang(int id, LangEnum lang);
 }
 
 public class UsersService : IUsersService
@@ -37,10 +38,18 @@ public class UsersService : IUsersService
 
         var userModel = new UserModel()
         {
+            Id = user.Id,
             UserName = tgUser.Username ?? user.UserName,
             InterfaceLang = user.InterfaceLang,
             TelegramId = tgUser.Id
         };
         return userModel;
+    }
+
+    public async Task UpdateLang(int id, LangEnum lang)
+    {
+        await _context.Users
+            .Where(u => u.Id == id)
+            .ExecuteUpdateAsync(p => p.SetProperty(u => u.InterfaceLang, lang));
     }
 }

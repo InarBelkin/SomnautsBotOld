@@ -1,4 +1,5 @@
 ﻿using Services.Services;
+using Services.Telegram.Handlers;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -12,11 +13,14 @@ public interface ITgUpdateHandler
 public class TgUpdateHandler : ITgUpdateHandler
 {
     private readonly ITgCommandsHandler _commandsHandler;
+    private readonly ITgButtonsHandler _tgButtonsHandler;
     private readonly IUsersService _usersService;
 
-    public TgUpdateHandler(ITgCommandsHandler commandsHandler, IUsersService usersService)
+    public TgUpdateHandler(ITgCommandsHandler commandsHandler, ITgButtonsHandler tgButtonsHandler,
+        IUsersService usersService)
     {
         _commandsHandler = commandsHandler;
+        _tgButtonsHandler = tgButtonsHandler;
         _usersService = usersService;
     }
 
@@ -45,6 +49,7 @@ public class TgUpdateHandler : ITgUpdateHandler
 
     private async Task HandleButton(CallbackQuery updateCallbackQuery)
     {
-        throw new NotImplementedException();
+        var user = await _usersService.GetOrCreateUser(updateCallbackQuery.From);
+        await _tgButtonsHandler.InvokeAsync(user, updateCallbackQuery);
     }
 }

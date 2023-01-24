@@ -11,6 +11,10 @@
     "ru": "Select interface language:\nВыберите язык интерфейса:",
     "en": "Select interface language:\nВыберите язык интерфейса:"
   },
+  "uiLangSelected": {
+    "ru": "Язык интерфейса изменён на русский",
+    "en": "Interface language changed to English"
+  },
   "selectBookLang": {
     "ru": "Выберите язык этой книги:",
     "en": "Select current book language:"

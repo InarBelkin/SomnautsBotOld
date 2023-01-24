@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Services.Configuration;
 using Services.Services;
 using Services.Telegram;
+using Services.Telegram.Handlers;
 using Telegram.Bot;
 
 namespace Services.Utils;
@@ -21,8 +22,10 @@ public static class TelegramServicesExtensions
 
         services.AddScoped<IUsersService, UsersService>();
 
-        services.AddScoped<ITgUpdateHandler, TgUpdateHandler>();
-        services.AddScoped<ITgCommandsHandler, TgCommandsHandler>();
+        services.AddScoped<ITgUpdateHandler, TgUpdateHandler>()
+            .AddScoped<ITgCommandsHandler, TgCommandsHandler>()
+            .AddScoped<ITgButtonsHandler, TgButtonsHandler>();
+
         services.AddSingleton<ITelegramBotClient>(provider =>
             new TelegramBotClient(provider.GetRequiredService<IOptions<TelegramOptions>>().Value.Token));
         services.AddHostedService<TgBotHostedService>();
