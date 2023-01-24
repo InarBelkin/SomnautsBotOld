@@ -1,6 +1,4 @@
-﻿using Telegram.Bot.Requests;
-
-namespace Services.Models;
+﻿namespace Services.Models;
 
 public class UserModel
 {

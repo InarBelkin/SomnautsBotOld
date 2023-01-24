@@ -4,9 +4,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomnautsServer", "SomnautsS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{65CA05B7-98C1-400D-A970-3ABC2C0883E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookServices", "BookServices\BookServices.csproj", "{47EB5E25-F11C-46CA-952E-8003860242A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookServicesJs", "BookServicesJs\BookServicesJs.csproj", "{47EB5E25-F11C-46CA-952E-8003860242A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D5DAF509-BA6E-43C0-9134-8FBF511BA6FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{48878335-3016-4826-A894-9182A7D306AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{42088AE2-201A-424F-B7DA-6668201D1F8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +34,13 @@ Global
 		{D5DAF509-BA6E-43C0-9134-8FBF511BA6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5DAF509-BA6E-43C0-9134-8FBF511BA6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5DAF509-BA6E-43C0-9134-8FBF511BA6FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48878335-3016-4826-A894-9182A7D306AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48878335-3016-4826-A894-9182A7D306AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48878335-3016-4826-A894-9182A7D306AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48878335-3016-4826-A894-9182A7D306AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42088AE2-201A-424F-B7DA-6668201D1F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42088AE2-201A-424F-B7DA-6668201D1F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42088AE2-201A-424F-B7DA-6668201D1F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42088AE2-201A-424F-B7DA-6668201D1F8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

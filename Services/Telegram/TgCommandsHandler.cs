@@ -14,8 +14,7 @@ public class TgCommandsHandler : ITgCommandsHandler
 {
     private readonly UiLocalization _localization;
     private readonly ITelegramBotClient _telegramBotClient;
-    private const string MissingTest = "text is missing";
-
+    
     public TgCommandsHandler(UiLocalization localization, ITelegramBotClient telegramBotClient)
     {
         _localization = localization;

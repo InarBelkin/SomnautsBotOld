@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BookServices\BookServices.csproj" />
+      <ProjectReference Include="..\BookServicesJs\BookServicesJs.csproj" />
       <ProjectReference Include="..\DAL\DAL.csproj" />
     </ItemGroup>
 

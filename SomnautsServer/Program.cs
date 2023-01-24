@@ -1,4 +1,3 @@
-using Services.Configuration;
 using Services.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
