@@ -2,6 +2,7 @@
 using Services.Models;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Utils.Language;
 
 namespace Services.Telegram;
 
@@ -12,12 +13,12 @@ public interface ITgCommandsHandler
 
 public class TgCommandsHandler : ITgCommandsHandler
 {
-    private readonly UiLocalization _localization;
+    private readonly UiLocalization _uiResources;
     private readonly ITelegramBotClient _telegramBotClient;
-    
-    public TgCommandsHandler(UiLocalization localization, ITelegramBotClient telegramBotClient)
+
+    public TgCommandsHandler(UiLocalization uiResources, ITelegramBotClient telegramBotClient)
     {
-        _localization = localization;
+        _uiResources = uiResources;
         _telegramBotClient = telegramBotClient;
     }
 
@@ -27,7 +28,7 @@ public class TgCommandsHandler : ITgCommandsHandler
         {
             case "start" or "help":
                 await _telegramBotClient.SendTextMessageAsync(user.TelegramId,
-                    _localization.Help[user.InterfaceLang]);
+                    _uiResources.Help.WithErrorString(user.InterfaceLang));
                 break;
         }
     }

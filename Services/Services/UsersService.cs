@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Services.Models;
 using Telegram.Bot.Types;
+using Utils.Language;
 
 namespace Services.Services;
 
@@ -28,7 +29,7 @@ public class UsersService : IUsersService
                 new DAL.Entities.User()
                 {
                     UserName = tgUser.Username ?? tgUser.FirstName,
-                    InterfaceLang = tgUser.LanguageCode,
+                    InterfaceLang = LangEnum.DefineLanguageOrEng(tgUser.LanguageCode),
                     TelegramId = tgUser.Id,
                 }).Entity;
             await _context.SaveChangesAsync();
@@ -37,7 +38,7 @@ public class UsersService : IUsersService
         var userModel = new UserModel()
         {
             UserName = tgUser.Username ?? user.UserName,
-            InterfaceLang = user.InterfaceLang ?? tgUser.LanguageCode ?? "en",
+            InterfaceLang = user.InterfaceLang,
             TelegramId = tgUser.Id
         };
         return userModel;

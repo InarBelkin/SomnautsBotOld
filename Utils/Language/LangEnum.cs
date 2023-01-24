@@ -34,4 +34,10 @@ public sealed class LangEnum : SmartEnum<LangEnum, string>
 
     public static LangEnum GetAvailableLang(LangEnum neededLang, LangEnum[] availableLangs) =>
         availableLangs.Contains(neededLang) ? neededLang : availableLangs.OrderBy(l => l.Value).First();
+
+    public static LangEnum DefineLanguageOrEng(string? langCode)
+    {
+        var lang = langCode == null ? List.FirstOrDefault(l => l.Aliases.Contains(langCode)) ?? En : En;
+        return lang;
+    }
 }
