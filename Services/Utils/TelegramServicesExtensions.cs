@@ -16,11 +16,13 @@ public static class TelegramServicesExtensions
     public static IServiceCollection AddTelegramServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<TelegramOptions>(configuration.GetSection("TelegramOptions"));
+        services.Configure<BooksOptions>(configuration.GetSection("BooksOptions"));
         services.AddLocalizations();
 
         services.AddDal(configuration);
 
-        services.AddScoped<IUsersService, UsersService>();
+        services.AddScoped<IUsersService, UsersService>()
+            .AddScoped<IBooksService, BooksService>();
 
         services.AddScoped<ITgUpdateHandler, TgUpdateHandler>()
             .AddScoped<ITgCommandsHandler, TgCommandsHandler>()
